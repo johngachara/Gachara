@@ -94,7 +94,7 @@ const Home = () => {
                     </Heading>
                     <Text fontSize="xl" mb={6} textAlign="center" maxW="md">
                         Alltech Management System.
-                        This is a full stack web application for a phone repair shop that is used to manage stock,sales
+                        This is a full stack web application for a phone repair shop that i actively maintain and is used to manage stock,sales
                         and transactions for the business.It utilises a django backend for handling requests and a
                         POSTGRESQL database for storing the data.The backend is hosted on c-panel shared hosting whereas
                         the database is hosted on aws relational database service.The frontend is developed in react and
