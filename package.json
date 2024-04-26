@@ -1,5 +1,5 @@
 {
-  "name": "untitled14",
+  "name": "gachara-portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -40,5 +40,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This is my updated portfolio",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "gachara",
+  "license": "ISC"
 }
