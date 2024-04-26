@@ -109,7 +109,7 @@ const Home = () => {
                 <Image
                         src={alltech}
                         alt="Featured Project Screenshot"
-                        maxW="xl"
+                        maxW="l"
                         borderRadius="md"
                         boxShadow="lg"
                     />
