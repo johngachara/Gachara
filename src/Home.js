@@ -77,7 +77,7 @@ const Home = () => {
                 </Flex>
                 <Flex justify="center">
                     <Stack direction={['column', 'row']} spacing={6}>
-                        <Link href="https://github.com/your-username" isExternal>
+                        <Link href="https://github.com/johngachara" isExternal>
                             <Icon as={FaGithub} boxSize={10} />
                         </Link>
                         <Link href="mailto:johngachara29@gmail.com" isExternal>
