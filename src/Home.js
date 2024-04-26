@@ -80,7 +80,7 @@ const Home = () => {
                         <Link href="https://github.com/your-username" isExternal>
                             <Icon as={FaGithub} boxSize={10} />
                         </Link>
-                        <Link href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRlRjCvFPnfDNdfrPdpgbNnFpVLxrfmbZwCtXhZvXwrRdMxCKtWdCKbqvKKTfhvzWgmvqnv" isExternal>
+                        <Link href="mailto:johngachara29@gmail.com" isExternal>
                             <Icon as={FaEnvelope} boxSize={10} />
                         </Link>
                     </Stack>
