@@ -80,6 +80,9 @@ const AboutPage = () => {
                         <Text mb={6}>
                             <strong>Expected Graduation:</strong> September 2025
                         </Text>
+                        <Text mb={6}>
+                            <strong>Certifications:</strong> E-mobilid web development bootcamp
+                        </Text>
 
                         <Heading as="h2" size="xl" mb={4}>
                             Skills
