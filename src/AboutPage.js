@@ -12,136 +12,181 @@ import {
     Divider,
     Grid,
     GridItem,
+    Container,
+    useColorModeValue,
+    VStack,
+    HStack,
+    Tag,
+    SimpleGrid,
+    Button,
 } from '@chakra-ui/react';
-import { FaGithub, FaLinkedin, FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaMapMarkerAlt, FaEnvelope, FaPhone, FaUniversity, FaCertificate, FaLaptopCode, FaTools, FaDesktop, FaUserTie } from 'react-icons/fa';
 import Navbar from "./Navbar";
 
+const MotionBox = motion(Box);
+
+const SkillCategory = ({ icon, title, skills }) => (
+    <Box
+        bg={useColorModeValue('white', 'gray.800')}
+        p={6}
+        borderRadius="lg"
+        boxShadow="lg"
+        transition="all 0.3s"
+        _hover={{ transform: 'translateY(-5px)', boxShadow: 'xl' }}
+    >
+        <VStack align="start" spacing={4}>
+            <HStack>
+                <Icon as={icon} w={6} h={6} color={useColorModeValue('blue.500', 'blue.300')} />
+                <Heading as="h3" size="md">{title}</Heading>
+            </HStack>
+            <SimpleGrid columns={2} spacing={2}>
+                {skills.map((skill, index) => (
+                    <Tag key={index} size="md" variant="subtle" colorScheme="blue">
+                        {skill}
+                    </Tag>
+                ))}
+            </SimpleGrid>
+        </VStack>
+    </Box>
+);
+
 const AboutPage = () => {
+    const bgColor = useColorModeValue('gray.50', 'gray.900');
+    const textColor = useColorModeValue('gray.800', 'gray.100');
+    const gradientStart = useColorModeValue('#4158D0', '#0093E9');
+    const gradientEnd = useColorModeValue('#C850C0', '#80D0C7');
+
     return (
-        <div>
-        <Navbar />
-
-        <Box maxW="1200px" mx="auto" py={12} px={6}>
-            <Grid
-                templateColumns={['1fr', '1fr', 'repeat(2, 1fr)']}
-                gap={8}
-                alignItems="center"
+        <Box>
+            <Navbar />
+            <Box
+                bgGradient={`linear(to-br, ${gradientStart}, ${gradientEnd})`}
+                color="white"
+                py={20}
+                px={8}
             >
-                <GridItem>
-                    <Flex align="center" direction={['column', 'row']} mb={8}>
-                        <Avatar
-                            size="2xl"
-                            name="John Gachara Mwangi"
-                            src="/profile-photo.jpg"
-                            mr={[0, 8]}
-                            mb={[4, 0]}
-                        />
-                        <Box>
-                            <Heading as="h1" size="4xl" mb={2}>
-                                John Gachara Mwangi
-                            </Heading>
-                            <Text fontSize="xl" fontWeight="bold" mb={2}>
-                                Software Engineer
-                            </Text>
-                            <Flex align="center" mb={2}>
-                                <Icon as={FaMapMarkerAlt} mr={2} />
-                                <Text>Nairobi, Kenya</Text>
+                <Container maxW="container.xl">
+                    <Grid templateColumns={['1fr', '1fr', 'repeat(2, 1fr)']} gap={8} alignItems="center">
+                        <MotionBox
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <Flex align="center" direction={['column', 'row']}>
+                                <Avatar
+                                    size="2xl"
+                                    name="John Gachara Mwangi"
+                                    src="/api/placeholder/200/200"
+                                    mr={[0, 8]}
+                                    mb={[4, 0]}
+                                />
+                                <VStack align={['center', 'start']} spacing={2}>
+                                    <Heading as="h1" size="2xl">
+                                        John Gachara Mwangi
+                                    </Heading>
+                                    <Text fontSize="xl" fontWeight="bold">
+                                        Software Engineer
+                                    </Text>
+                                    <HStack>
+                                        <Icon as={FaMapMarkerAlt} />
+                                        <Text>Nairobi, Kenya</Text>
+                                    </HStack>
+                                    <HStack>
+                                        <Icon as={FaEnvelope} />
+                                        <Link href="mailto:johngachara29@gmail.com" isExternal>
+                                            johngachara29@gmail.com
+                                        </Link>
+                                    </HStack>
+                                    <HStack>
+                                        <Icon as={FaPhone} />
+                                        <Text>+254 712 240 197</Text>
+                                    </HStack>
+                                    <HStack spacing={4} mt={4}>
+                                        <Button
+                                            as={Link}
+                                            href="https://github.com/johngachara"
+                                            isExternal
+                                            leftIcon={<FaGithub />}
+                                            colorScheme="whiteAlpha"
+                                            variant="outline"
+                                        >
+                                            GitHub
+                                        </Button>
+                                        <Button
+                                            as={Link}
+                                            href="#"
+                                            isExternal
+                                            leftIcon={<FaLinkedin />}
+                                            colorScheme="whiteAlpha"
+                                            variant="outline"
+                                        >
+                                            LinkedIn
+                                        </Button>
+                                    </HStack>
+                                </VStack>
                             </Flex>
-                            <Flex align="center" mb={2}>
-                                <Icon as={FaEnvelope} mr={2} />
-                                <Link href="mailto:johngachara29@gmail.com" isExternal>
-                                    johngachara29@gmail.com
-                                </Link>
-                            </Flex>
-                            <Flex align="center" mb={4}>
-                                <Icon as={FaPhone} mr={2} />
-                                <Text>+254 712 240 197</Text>
-                            </Flex>
-                            <Flex>
-                                <Link href="https://github.com/johngachara" isExternal>
-                                    <Icon as={FaGithub} boxSize={6} />
-                                </Link>
-                            </Flex>
-                        </Box>
-                    </Flex>
-                </GridItem>
+                        </MotionBox>
+                        <MotionBox
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <VStack align="start" spacing={6} bg="rgba(255, 255, 255, 0.1)" p={6} borderRadius="lg">
+                                <Box>
+                                    <Heading as="h2" size="lg" mb={2}>
+                                        <Icon as={FaUniversity} mr={2} />
+                                        Education
+                                    </Heading>
+                                    <Text><strong>University:</strong> KCA University</Text>
+                                    <Text><strong>Major:</strong> Bachelor's Information Communication Technology</Text>
+                                    <Text><strong>Expected Graduation:</strong> September 2025</Text>
+                                </Box>
+                                <Box>
+                                    <Heading as="h2" size="lg" mb={2}>
+                                        <Icon as={FaCertificate} mr={2} />
+                                        Certifications
+                                    </Heading>
+                                    <Text>E-mobilid web development bootcamp</Text>
+                                </Box>
+                            </VStack>
+                        </MotionBox>
+                    </Grid>
+                </Container>
+            </Box>
 
-                <GridItem>
-                    <Box>
-                        <Heading as="h2" size="xl" mb={4}>
-                            Education
+            <Box bg={bgColor} color={textColor} py={20} px={8}>
+                <Container maxW="container.xl">
+                    <VStack spacing={12}>
+                        <Heading as="h2" size="2xl" mb={8} textAlign="center">
+                            Skills & Expertise
                         </Heading>
-                        <Text mb={2}>
-                            <strong>University:</strong> KCA University
-                        </Text>
-                        <Text mb={2}>
-                            <strong>Major:</strong> Bachelor's Information Communication Technology
-                        </Text>
-                        <Text mb={6}>
-                            <strong>Expected Graduation:</strong> September 2025
-                        </Text>
-                        <Text mb={6}>
-                            <strong>Certifications:</strong> E-mobilid web development bootcamp
-                        </Text>
-
-                        <Heading as="h2" size="xl" mb={4}>
-                            Skills
-                        </Heading>
-                        <Heading as="h3" size="md" mb={2}>
-                            Programming Languages
-                        </Heading>
-                        <UnorderedList spacing={2} mb={4}>
-                            <ListItem>Python</ListItem>
-                            <ListItem>Java</ListItem>
-                            <ListItem>JavaScript</ListItem>
-                        </UnorderedList>
-                        <Heading as="h3" size="md" mb={2}>
-                            Tools and Technologies
-                        </Heading>
-                        <UnorderedList spacing={2} mb={6}>
-                            <ListItem>Django||Express</ListItem>
-                            <ListItem>React</ListItem>
-                            <ListItem>Git</ListItem>
-                            <ListItem>REST</ListItem>
-                            <ListItem>Bootstrap</ListItem>
-                            <ListItem>AWS(EC2,RDS)|C-Panel | Vercel</ListItem>
-                            <ListItem>Daisy ui | Chakra ui</ListItem>
-                            <ListItem>Pandas | NumPy</ListItem>
-                            <ListItem>Sci-kit Learn | Tensorflow</ListItem>
-                            <ListItem>Seaborn | MatplotLib</ListItem>
-                            <ListItem>PostgreSQL | MYSQL</ListItem>
-                            <ListItem>SQL</ListItem>
-                            <ListItem>Celery</ListItem>
-
-                        </UnorderedList>
-
-                        <Heading as="h2" size="xl" mb={4}>
-                            Development Environments
-                        </Heading>
-                        <UnorderedList spacing={2} mb={6}>
-                            <ListItem>Windows</ListItem>
-                            <ListItem>LINUX(UBUNTU)</ListItem>
-                        </UnorderedList>
-
-                        <Heading as="h2" size="xl" mb={4}>
-                            Soft Skills
-                        </Heading>
-                        <UnorderedList spacing={2}>
-                            <ListItem>Problem-solving</ListItem>
-                            <ListItem>Collaboration</ListItem>
-                            <ListItem>Adaptability</ListItem>
-                            <ListItem>Communication</ListItem>
-                            <ListItem>Innovation</ListItem>
-                            <ListItem>Attention to detail</ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-            </Grid>
-
-            <Divider my={12} />
-
+                        <SimpleGrid columns={[1, null, 2]} spacing={8} w="full">
+                            <SkillCategory
+                                icon={FaLaptopCode}
+                                title="Programming Languages"
+                                skills={['Python', 'Java', 'JavaScript']}
+                            />
+                            <SkillCategory
+                                icon={FaTools}
+                                title="Tools and Technologies"
+                                skills={['Django', 'Express', 'React', 'Git', 'REST', 'Bootstrap', 'AWS (EC2, RDS)', 'C-Panel', 'Vercel', 'Daisy UI', 'Chakra UI', 'Pandas', 'NumPy', 'Sci-kit Learn', 'TensorFlow', 'Seaborn', 'MatplotLib', 'PostgreSQL', 'MySQL', 'SQL', 'Celery']}
+                            />
+                            <SkillCategory
+                                icon={FaDesktop}
+                                title="Development Environments"
+                                skills={['Windows', 'Linux (Ubuntu)']}
+                            />
+                            <SkillCategory
+                                icon={FaUserTie}
+                                title="Soft Skills"
+                                skills={['Problem-solving', 'Collaboration', 'Adaptability', 'Communication', 'Innovation', 'Attention to detail']}
+                            />
+                        </SimpleGrid>
+                    </VStack>
+                </Container>
+            </Box>
         </Box>
-        </div>
     );
 };
 

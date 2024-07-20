@@ -3,569 +3,250 @@ import {
     Box,
     Heading,
     Text,
-    UnorderedList,
-    ListItem,
     Link,
     Grid,
     GridItem,
     Icon,
     Flex,
     Spacer,
+    Tag,
+    Image,
+    useColorModeValue,
 } from '@chakra-ui/react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaLock, FaExternalLinkAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import Navbar from "./Navbar";
 
-const ProjectsPage = () => {
+const MotionBox = motion(Box);
+
+const ProjectCard = ({ project }) => {
+    const bgColor = useColorModeValue('gray.100', 'gray.700');
+    const borderColor = useColorModeValue('blue.500', 'blue.300');
+
     return (
-        <div>
-            <Navbar/>
-        <Box maxW="1200px" mx="auto" py={12} px={6}>
-            <Heading as="h1" size="4xl" mb={8}>
-                Projects
-            </Heading>
+        <MotionBox
+            p={6}
+            bg={bgColor}
+            borderRadius="lg"
+            borderLeft="4px solid"
+            borderColor={borderColor}
+            boxShadow="lg"
+            transition="all 0.3s"
+            _hover={{ transform: 'translateY(-5px)', boxShadow: 'xl' }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+        >
+            <Flex direction="column" height="100%">
+                <Flex alignItems="center" mb={4}>
+                    <Heading as="h2" size="lg" mr={4} color={useColorModeValue('gray.800', 'white')}>
+                        {project.title}
+                    </Heading>
+                    <Spacer />
+                    <Link href={project.githubLink} isExternal mr={2}>
+                        <Icon as={FaGithub} boxSize={6} />
+                    </Link>
+                    {project.isPrivate && (
+                        <Tag colorScheme="red" size="sm">
+                            <Icon as={FaLock} mr={1} /> Private
+                        </Tag>
+                    )}
+                    {project.liveLink && (
+                        <Link href={project.liveLink} isExternal ml={2}>
+                            <Icon as={FaExternalLinkAlt} boxSize={5} />
+                        </Link>
+                    )}
+                </Flex>
+                {project.screenshot && (
+                    <Image
+                        src={project.screenshot}
+                        alt={`${project.title} screenshot`}
+                        borderRadius="md"
+                        mb={4}
+                        objectFit="cover"
+                        height="200px"
+                        width="100%"
+                    />
+                )}
+                <Text mb={4} flex="1">
+                    {project.description}
+                </Text>
+                <Flex wrap="wrap" mt={2}>
+                    {project.technologies.map((tech, index) => (
+                        <Tag key={index} colorScheme="blue" mr={2} mb={2}>
+                            {tech}
+                        </Tag>
+                    ))}
+                </Flex>
+            </Flex>
+        </MotionBox>
+    );
+};
 
-            <Grid templateColumns={['1fr', '1fr', 'repeat(2, 1fr)']} gap={8}>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                              PHENOM ISP SYSTEM(ONGOING)
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/patmuchiri/phenom_isp_software" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                Collaborating with a network engineer to develop an isp management system that is meant to handle customer data and autonomously handle router activation and deactivation using mikrotik api based on customer subscription status.
-                            </ListItem>
-                            <ListItem>
-                              M-PESA STK Push will be incorporated in the final stages
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
+const ProjectsPage = () => {
+    const projects = [
+        {
+            title: "PHENOM ISP SYSTEM",
+            description: "Collaborating with a network engineer to develop an ISP management system that handles customer data and autonomously manages router activation using Mikrotik API based on customer subscription status. M-PESA STK Push will be incorporated in the final stages.",
+            githubLink: "https://github.com/patmuchiri/phenom_isp_software",
+            isPrivate: true,
+            technologies: ["Python", "Django", "React", "Mikrotik API", "M-PESA API"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "ALLTECH SHOP MANAGEMENT SYSTEM",
+            description: "A full-stack web application for a local business (Alltech), managing 2 shops and a storage facility. Features include user authentication, stock management, AI response (Google's Gemini model), and email services.",
+            githubLink: "https://github.com/johngachara/alltechfront",
+            liveLink: "https://alltechfront.vercel.app/",
+            technologies: ["Django", "React", "PostgreSQL", "AWS RDS", "Vercel", "Daisy UI", "Google Gemini API"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "COVID-19 ANALYSIS",
+            description: "A web application utilizing Python's data visualization and manipulation tools on a large COVID-19 analysis dataset from Kaggle. Visualized various observations using pair plots and bar graphs.",
+            githubLink: "https://github.com/johngachara/Covid19Analysis",
+            technologies: ["Python", "Pandas", "NumPy", "Seaborn", "Matplotlib"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "RANDOM FOREST MODEL",
+            description: "Developed a Random Forest model predicting car prices based on a Kaggle dataset utilizing Pandas and Sci-kit Learn. Predictions stored in a simple CSV file.",
+            githubLink: "https://github.com/johngachara/random-forest-model",
+            technologies: ["Python", "Pandas", "Scikit-learn"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "SPOTIFY CLONE",
+            description: "A web application clone of Spotify, utilizing Spotify's web API and Web Playback SDK. Offers user authentication and seamless integration with Spotify, allowing users to search and play songs, view playlists, etc.",
+            githubLink: "https://github.com/johngachara/spotifyclone",
+            technologies: ["React", "Spotify API", "Web Playback SDK"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "TITANIC DATA ANALYSIS",
+            description: "Performed data analysis on the historic Titanic dataset utilizing Python tools. Utilized scikit-learn library for preprocessing techniques e.g., Normalization.",
+            githubLink: "https://github.com/johngachara/titanic-data-analysis",
+            technologies: ["Python", "Pandas", "Seaborn", "NumPy", "Scikit-learn"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Restaurant Website",
+            description: "A static website for a restaurant showcasing their menu, location, and other information, built using HTML5 and CSS3.",
+            githubLink: "https://github.com/johngachara/restaurantwebsite",
+            technologies: ["HTML5", "CSS3"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Simple Image Uploader App",
+            description: "A Django web application that allows users to upload and view images.",
+            githubLink: "https://github.com/johngachara/imageuploader",
+            technologies: ["Django", "Python"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Weather App",
+            description: "A Django web application that displays current weather information and forecasts by integrating with the VisualCrossing Weather API.",
+            githubLink: "https://github.com/johngachara/weatherapp",
+            technologies: ["Django", "Python", "VisualCrossing Weather API"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Weather 2.0",
+            description: "An improved version of the Weather app mentioned earlier, with additional features and a better UI.",
+            githubLink: "https://github.com/johngachara/weather2.0",
+            technologies: ["Django", "Python", "VisualCrossing Weather API"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Astronomy Picture of the Day",
+            description: "An application that fetches and displays the Astronomy Picture of the Day from NASA's API.",
+            githubLink: "https://github.com/johngachara/astronomy",
+            technologies: ["Python", "NASA API"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Simple RESTful API for Posts",
+            description: "A RESTful API built with Django, providing endpoints to create, read, update, and delete blog posts.",
+            githubLink: "https://github.com/johngachara/restapi",
+            technologies: ["Django", "Django REST Framework"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Iris Dataset Visualization App",
+            description: "A web application that visualizes the famous Iris dataset using data visualization libraries i.e., Matplotlib and Seaborn.",
+            githubLink: "https://github.com/johngachara/Irisvisualization",
+            technologies: ["Python", "Matplotlib", "Seaborn"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Song Management API",
+            description: "A Django-based RESTful API for managing songs, artists, albums, and their relationships.",
+            githubLink: "https://github.com/johngachara/RESTAPI2",
+            technologies: ["Django", "Django REST Framework"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Shop Management API",
+            description: "A Django-based RESTful API for managing shops, products, inventory, and their relationships.",
+            githubLink: "https://github.com/johngachara/restapi3",
+            technologies: ["Django", "Django REST Framework"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "K-Nearest Neighbors Classifier (Wine Dataset)",
+            description: "A machine learning model using the K-Nearest Neighbors algorithm to classify the Wine dataset, implemented using the Scikit-learn library in Python.",
+            githubLink: "https://github.com/johngachara/knn2",
+            technologies: ["Python", "Scikit-learn", "K-Nearest Neighbors"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "K-Nearest Neighbors Classifier (Iris Dataset)",
+            description: "Similar to the previous project, but using the Iris dataset and the K-Nearest Neighbors algorithm for classification.",
+            githubLink: "https://github.com/johngachara/knneighbours",
+            technologies: ["Python", "Scikit-learn", "K-Nearest Neighbors"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Express.js API with MongoDB",
+            description: "A RESTful API built with Express.js and MongoDB, utilizing MongoDB's find functions to perform CRUD operations on a simple schema.",
+            githubLink: "https://github.com/johngachara/expressapi",
+            technologies: ["Express.js", "MongoDB", "Node.js"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "Express.js School API",
+            description: "Similar to the previous project, but with a more complex schema related to a school or educational institution, allowing CRUD operations on entities like students.",
+            githubLink: "https://github.com/johngachara/expressapi2",
+            technologies: ["Express.js", "MongoDB", "Node.js"],
+            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            title: "GitHub Username Search React App",
+            description: "A React application that allows users to search for GitHub usernames and display relevant information about the user i.e., repositories.",
+            githubLink: "https://github.com/johngachara/githubapi",
+            technologies: ["React", "GitHub API"],
+            screenshot: "/api/placeholder/400/200"
+        }
+    ];
 
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                ALLTECH SHOP MANAGEMENT SYSTEM
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://alltechfront.vercel.app/" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                Developed a full-stack web application for a local business (Alltech), managing 2
-                                shops and a storage facility in Django and React.
-                            </ListItem>
-                            <ListItem>
-                                Backend Hosted on C-panel using PostgreSQL for the database hosted on AWS
-                                Relational Database Service.
-                            </ListItem>
-                            <ListItem>
-                                Frontend Hosted on Vercel and utilizes Daisy UI for component styling.
-                            </ListItem>
-                            <ListItem>
-                                Features: User authentication, stock management, AI response (Google's Gemini
-                                model), and email services via Google's SMTP server.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                COVID-19 ANALYSIS
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/Covid19Analysis" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                Developed a web application utilizing Python's data visualization and manipulation
-                                tools (Pandas, NumPy, Seaborn, Matplotlib) on a large COVID-19 analysis dataset
-                                from Kaggle.
-                            </ListItem>
-                            <ListItem>
-                                Visualized various observations using pair plots and bar graphs. Data shuffled upon
-                                each refresh.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                RANDOM FOREST MODEL
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/random-forest-model" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                Developed a Random Forest model predicting car prices based on a Kaggle dataset
-                                utilizing Pandas and Sci-kit Learn.
-                            </ListItem>
-                            <ListItem>Predictions stored in a simple CSV file.</ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                SPOTIFY CLONE
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/spotifyclone" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                Developed a web application clone of Spotify, utilizing Spotify's web API and Web
-                                Playback SDK.
-                            </ListItem>
-                            <ListItem>
-                                Offers user authentication and seamless integration with Spotify, allowing users to
-                                search and play songs, view playlists, etc.
-                            </ListItem>
-                            <ListItem>Attempted to provide a UI similar to Spotify.</ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                TITANIC DATA ANALYSIS
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/titanic-data-analysis" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                Performed data analysis on the historic Titanic dataset utilizing Python tools
-                                i.e., Pandas, Seaborn, NumPy.
-                            </ListItem>
-                            <ListItem>
-                                Utilized scikit-learn library for preprocessing techniques e.g., Normalization.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Restaurant Website Using HTML5 and CSS3
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/restaurantwebsite" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                A static website for a restaurant showcasing their menu, location, and other information, built using HTML5 and CSS3.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Simple Image Uploader App Using Django
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/imageuploader" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                A Django web application that allows users to upload and View images.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Weather App Using Django and VisualCrossing Weather API
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/weatherapp" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                A Django web application that displays current weather information and forecasts by integrating with the VisualCrossing Weather API.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                               Weather 2.0
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/weather2.0" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                An improved  version of the Weather app mentioned earlier, with additional features and a better ui.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Astronomy Picture of the Day
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/astronomy" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                An application that fetches and displays the Astronomy Picture of the Day from NASA's API.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Simple RESTful API That Manages Posts
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/restapi" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                A RESTful API built with Django, providing endpoints to create, read, update, and delete blog posts .
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Iris Dataset Visualization App
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/Irisvisualization" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                A web application that visualizes the famous Iris dataset using data visualization libraries ie Matplotlib and Seaborn.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Song Management API
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/RESTAPI2" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                  A Django-based RESTful API for managing songs, artists, albums, and their relationships.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Shop Management API
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/restapi3" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                 A Django-based RESTful API for managing shops, products, inventory, and their relationships.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                K-Nearest Neighbors Classifier Model on Sklearn Wine Dataset
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/knn2" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                A machine learning model using the K-Nearest Neighbors algorithm to classify the Wine dataset, implemented using the Scikit-learn library in Python.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                K-Nearest Neighbors Classifier Model on  Iris Dataset
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/knneighbours" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                Similar to the previous project, but using the Iris dataset and the K-Nearest Neighbors algorithm for classification.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Simple Express.js API Using MongoDB's Find Functions
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/expressapi" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                A RESTful API built with Express.js and MongoDB, utilizing MongoDB's find functions to perform CRUD operations on a simple schema.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                Express.js API Using MongoDB for CRUD Operations on a School Schema
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/expressapi2" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                Similar to the previous project, but with a more complex schema related to a school or educational institution, allowing CRUD operations on entities like students.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-                <GridItem>
-                    <Box
-                        p={6}
-                        bg="gray.100"
-                        borderRadius="md"
-                        boxShadow="md"
-                        transition="transform 0.2s"
-                        _hover={{ transform: 'scale(1.02)' }}
-                    >
-                        <Flex alignItems="center" mb={4}>
-                            <Heading as="h2" size="xl" mr={4}>
-                                GitHub Username Search React App
-                            </Heading>
-                            <Spacer />
-                            <Link href="https://github.com/johngachara/githubapi" isExternal>
-                                <Icon as={FaGithub} boxSize={6} />
-                            </Link>
-                        </Flex>
-                        <UnorderedList spacing={2}>
-                            <ListItem>
-                                A React application that allows users to search for GitHub usernames and display relevant information about the user ie repositories.
-                            </ListItem>
-                        </UnorderedList>
-                    </Box>
-                </GridItem>
-            </Grid>
+    return (
+        <Box>
+            <Navbar />
+            <Box maxW="1200px" mx="auto" py={20} px={6}> {/* Adjusted padding-top */}
+                <Heading as="h1" size="4xl" mb={8} textAlign="center" bgGradient="linear(to-r, blue.500, purple.500)" bgClip="text">
+                    My Tech Journey
+                </Heading>
+                <Text fontSize="xl" textAlign="center" mb={12}>
+                    Explore my projects and see how I've been pushing the boundaries of technology.
+                </Text>
+                <Grid templateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']} gap={8}>
+                    {projects.map((project, index) => (
+                        <GridItem key={index}>
+                            <ProjectCard project={project} />
+                        </GridItem>
+                    ))}
+                </Grid>
+            </Box>
         </Box>
-        </div>
     );
 };
 
