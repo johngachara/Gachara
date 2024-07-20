@@ -227,7 +227,7 @@ const Home = () => {
                             <Flex justify="center">
                                 <Button
                                     as={Link}
-                                    href="https://alltechfront.vercel.app"
+                                    href="https://main.gachara.store/Login"
                                     isExternal
                                     colorScheme="blue"
                                     size="lg"
