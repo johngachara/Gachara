@@ -108,7 +108,7 @@ const AboutPage = () => {
                                             href="https://github.com/johngachara"
                                             isExternal
                                             leftIcon={<FaGithub />}
-                                            colorScheme="whiteAlpha"
+                                            //colorScheme="whiteAlpha"
                                             variant="outline"
                                         >
                                             GitHub
@@ -118,7 +118,7 @@ const AboutPage = () => {
                                             href="#"
                                             isExternal
                                             leftIcon={<FaLinkedin />}
-                                            colorScheme="whiteAlpha"
+                                           // colorScheme="whiteAlpha"
                                             variant="outline"
                                         >
                                             LinkedIn
@@ -147,7 +147,7 @@ const AboutPage = () => {
                                         <Icon as={FaCertificate} mr={2} />
                                         Certifications
                                     </Heading>
-                                    <Text>E-mobilid web development bootcamp</Text>
+                                    <Text>E-mobilis web development bootcamp</Text>
                                 </Box>
                             </VStack>
                         </MotionBox>
@@ -170,7 +170,7 @@ const AboutPage = () => {
                             <SkillCategory
                                 icon={FaTools}
                                 title="Tools and Technologies"
-                                skills={['Django', 'Express', 'React', 'Git', 'REST', 'Bootstrap', 'AWS (EC2, RDS)', 'C-Panel', 'Vercel', 'Daisy UI', 'Chakra UI', 'Pandas', 'NumPy', 'Sci-kit Learn', 'TensorFlow', 'Seaborn', 'MatplotLib', 'PostgreSQL', 'MySQL', 'SQL', 'Celery']}
+                                skills={['Django', 'Express', 'React', 'Git', 'REST', 'Bootstrap', 'AWS (EC2, RDS,Route 53)', 'C-Panel', 'Vercel', 'Daisy UI', 'Chakra UI', 'Pandas', 'NumPy', 'Sci-kit Learn', 'TensorFlow', 'Seaborn', 'MatplotLib', 'PostgreSQL', 'MySQL', 'Celery',"Redis","Meilisearch"]}
                             />
                             <SkillCategory
                                 icon={FaDesktop}

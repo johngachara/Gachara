@@ -86,11 +86,11 @@ const ProjectsPage = () => {
     const projects = [
         {
             title: "PHENOM ISP SYSTEM",
-            description: "Collaborating with a network engineer to develop an ISP management system that handles customer data and autonomously manages router activation using Mikrotik API based on customer subscription status. M-PESA STK Push will be incorporated in the final stages.",
+            description: "Engineered a cutting-edge ISP management system, seamlessly integrating customer data handling with autonomous router activation via Mikrotik API. This innovative solution dynamically manages network resources based on real-time subscription status, incorporating M-PESA STK Push for streamlined payments and an intelligent bulk SMS system for proactive customer engagement. This project showcases advanced network automation and fintech integration skills",
             githubLink: "https://github.com/patmuchiri/phenom_isp_software",
-            isPrivate: true,
-            technologies: ["Python", "Django", "React", "Mikrotik API", "M-PESA API"],
-            screenshot: "/api/placeholder/400/200"
+            isPrivate: false,
+            technologies: ["Python", "Django", "ROUTEROS", "M-PESA API"],
+            screenshot: require('./phenom.png')
         },
         {
             title: "ALLTECH SHOP MANAGEMENT SYSTEM",

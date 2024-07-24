@@ -18,8 +18,8 @@ import {
     IconButton,
 } from '@chakra-ui/react';
 import { motion, useAnimation } from 'framer-motion';
-import { FaEnvelope, FaGithub, FaLinkedin, FaServer, FaDatabase, FaBrain, FaSun, FaMoon } from 'react-icons/fa';
-import { SiTensorflow, SiPytorch, SiReact, SiDjango, SiPostgresql } from 'react-icons/si';
+import { FaEnvelope, FaGithub, FaLinkedin, FaServer, FaBrain, FaSun, FaMoon } from 'react-icons/fa';
+import { SiTensorflow, SiReact, SiDjango, SiPostgresql,SiExpress,SiCelery,SiAwsorganizations,SiRedis,SiMeilisearch,SiFirebase,SiMongodb,SiNginx,SiCaddy,SiPandas,SiNumpy,SiUbuntu,SiScikitlearn ,SiCpanel} from 'react-icons/si';
 
 // Placeholder for project image
 const alltechImage = require("./alltech.png")
@@ -118,6 +118,8 @@ const Home = () => {
                             </Heading>
                             <Text fontSize="2xl" mb={8} textAlign="center">
                                 Full Stack Developer | ML Enthusiast | Deep Learning Explorer
+                                <br></br>
+                                "In pursuit to find or rewrite already written code"
                             </Text>
                         </motion.div>
 
@@ -180,10 +182,22 @@ const Home = () => {
                         <SimpleGrid columns={{ base: 3, md: 6 }} spacing={10}>
                             <TechIcon icon={SiReact} label="React" />
                             <TechIcon icon={SiDjango} label="Django" />
+                            <TechIcon icon={SiExpress} label="Express" />
+                            <TechIcon icon={SiFirebase} label="Firebase" />
+                            <TechIcon icon={SiRedis} label="Redis" />
+                            <TechIcon icon={SiCelery} label="Celery" />
+                            <TechIcon icon={SiMeilisearch} label="Meilisearch" />
                             <TechIcon icon={SiPostgresql} label="PostgreSQL" />
+                            <TechIcon icon={SiMongodb} label="MongoDB" />
                             <TechIcon icon={SiTensorflow} label="TensorFlow" />
-                            <TechIcon icon={SiPytorch} label="PyTorch" />
-                            <TechIcon icon={FaDatabase} label="Big Data" />
+                            <TechIcon icon={SiPandas} label="Pandas" />
+                            <TechIcon icon={SiNumpy} label="Numpy" />
+                            <TechIcon icon={SiScikitlearn} label="Sci-kit Learn" />
+                            <TechIcon icon={SiAwsorganizations} label="AWS" />
+                            <TechIcon icon={SiCpanel} label="C Panel" />
+                            <TechIcon icon={SiUbuntu} label="Ubuntu" />
+                            <TechIcon icon={SiCaddy} label="Caddy Reverse Proxy" />
+                            <TechIcon icon={SiNginx} label="Nginx Reverse Proxy" />
                         </SimpleGrid>
 
                         <Box w="100%">
@@ -209,6 +223,8 @@ const Home = () => {
                                 <br></br>
                                 Firebase Push Notifications: Real-time push notifications to keep users informed about
                                 stock updates and order updates.
+                                <br></br>
+                                Firebase Realtime Database & PostgreSQL: Data is stored using these databases
                                 <br></br>
                                 The system effectively manages key business functions, including stock control, sales
                                 tracking, and transaction management, demonstrating my ability to build and integrate
