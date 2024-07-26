@@ -11,7 +11,7 @@ import {
     Spacer,
     Tag,
     Image,
-    useColorModeValue,
+    useColorModeValue, Center,
 } from '@chakra-ui/react';
 import { FaGithub, FaLock, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -42,9 +42,9 @@ const ProjectCard = ({ project }) => {
                         {project.title}
                     </Heading>
                     <Spacer />
-                    <Link href={project.githubLink} isExternal mr={2}>
-                        <Icon as={FaGithub} boxSize={6} />
-                    </Link>
+                    {project.githubLink && (<Link href={project.githubLink} isExternal mr={2}>
+                        <Icon as={FaGithub} boxSize={6}/>
+                    </Link>)}
                     {project.isPrivate && (
                         <Tag colorScheme="red" size="sm">
                             <Icon as={FaLock} mr={1} /> Private
@@ -56,7 +56,7 @@ const ProjectCard = ({ project }) => {
                         </Link>
                     )}
                 </Flex>
-                {project.screenshot && (
+                {project.screenshot ? (
                     <Image
                         src={project.screenshot}
                         alt={`${project.title} screenshot`}
@@ -66,7 +66,12 @@ const ProjectCard = ({ project }) => {
                         height="200px"
                         width="100%"
                     />
-                )}
+                ) : <Center>
+                    <h2 style={{marginBottom:20}}>
+                      No screenshot to show
+
+                    </h2>
+                </Center>}
                 <Text mb={4} flex="1">
                     {project.description}
                 </Text>
@@ -89,37 +94,36 @@ const ProjectsPage = () => {
             description: "Engineered a cutting-edge ISP management system, seamlessly integrating customer data handling with autonomous router activation via Mikrotik API. This innovative solution dynamically manages network resources based on real-time subscription status, incorporating M-PESA STK Push for streamlined payments and an intelligent bulk SMS system for proactive customer engagement. This project showcases advanced network automation and fintech integration skills",
             githubLink: "https://github.com/patmuchiri/phenom_isp_software",
             isPrivate: false,
-            technologies: ["Python", "Django", "ROUTEROS", "M-PESA API"],
+            technologies: ["Python", "Django", "ROUTEROS", "PESA-PAL API"],
             screenshot: require('./phenom.png')
         },
         {
             title: "ALLTECH SHOP MANAGEMENT SYSTEM",
-            description: "A full-stack web application for a local business (Alltech), managing 2 shops and a storage facility. Features include user authentication, stock management, AI response (Google's Gemini model), and email services.",
-            githubLink: "https://github.com/johngachara/alltechfront",
-            liveLink: "https://alltechfront.vercel.app/",
-            technologies: ["Django", "React", "PostgreSQL", "AWS RDS", "Vercel", "Daisy UI", "Google Gemini API"],
-            screenshot: "/api/placeholder/400/200"
+            description: "A set of full-stack web applications for a local business (Alltech), managing 2 shops business transactions ;utilising 1 nodejs server ,1 django server ,1 react frontend and 1 full stack react app utilising firebase for the backend  and a storage facility. Features include user authentication, stock management, AI response (Google's Gemini model),Firebase Authentication, Redis Caching, email services.",
+            liveLink: "https://main.gachara.store/Login",
+            isPrivate: true,
+            technologies: ["Django", "React","Express", "PostgreSQL", "AWS RDS,EC2,Route 53", "Vercel", "Chakra UI", "Google Gemini API","Firebase  Authentication,Realtime Database","Redis Cache","Meilisearch","Google SMTP","Sequelizer"],
+            screenshot: require("./alltech.png")
         },
         {
             title: "COVID-19 ANALYSIS",
             description: "A web application utilizing Python's data visualization and manipulation tools on a large COVID-19 analysis dataset from Kaggle. Visualized various observations using pair plots and bar graphs.",
             githubLink: "https://github.com/johngachara/Covid19Analysis",
-            technologies: ["Python", "Pandas", "NumPy", "Seaborn", "Matplotlib"],
-            screenshot: "/api/placeholder/400/200"
+            technologies: ["Python", "Pandas", "NumPy", "Seaborn", "Matplotlib","Django"],
+            screenshot: require("./covid.png")
         },
         {
             title: "RANDOM FOREST MODEL",
             description: "Developed a Random Forest model predicting car prices based on a Kaggle dataset utilizing Pandas and Sci-kit Learn. Predictions stored in a simple CSV file.",
             githubLink: "https://github.com/johngachara/random-forest-model",
             technologies: ["Python", "Pandas", "Scikit-learn"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "SPOTIFY CLONE",
             description: "A web application clone of Spotify, utilizing Spotify's web API and Web Playback SDK. Offers user authentication and seamless integration with Spotify, allowing users to search and play songs, view playlists, etc.",
             githubLink: "https://github.com/johngachara/spotifyclone",
             technologies: ["React", "Spotify API", "Web Playback SDK"],
-            screenshot: "/api/placeholder/400/200"
+            screenshot:require('./spotify.png')
         },
         {
             title: "TITANIC DATA ANALYSIS",
