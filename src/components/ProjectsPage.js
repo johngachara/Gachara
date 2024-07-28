@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { FaGithub, FaLock, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 
 const MotionBox = motion(Box);
 
@@ -90,146 +90,152 @@ const ProjectCard = ({ project }) => {
 const ProjectsPage = () => {
     const projects = [
         {
-            title: "PHENOM ISP SYSTEM",
-            description: "Engineered a cutting-edge ISP management system, seamlessly integrating customer data handling with autonomous router activation via Mikrotik API. This innovative solution dynamically manages network resources based on real-time subscription status, incorporating M-PESA STK Push for streamlined payments and an intelligent bulk SMS system for proactive customer engagement. This project showcases advanced network automation and fintech integration skills",
+            title: "PHENOM ISP SYSTEM (ONGOING)",
+            description: "Engineered a state-of-the-art ISP management system that revolutionizes network administration. Seamlessly integrated customer data handling with autonomous router activation via Mikrotik API. Implemented dynamic network resource management based on real-time subscription status. Incorporated M-PESA STK Push for frictionless payment processing and developed an intelligent bulk SMS system for proactive customer engagement.",
             githubLink: "https://github.com/patmuchiri/phenom_isp_software",
-            isPrivate: false,
-            technologies: ["Python", "Django", "ROUTEROS", "PESA-PAL API"],
-            screenshot: require('./phenom.png')
+            technologies: ["Django", "ROUTEROS", "PESA-PAL API"],
+            screenshot: require('../screenshots/phenom.png')
         },
         {
             title: "ALLTECH SHOP MANAGEMENT SYSTEM",
-            description: "A set of full-stack web applications for a local business (Alltech), managing 2 shops business transactions ;utilising 1 nodejs server ,1 django server ,1 react frontend and 1 full stack react app utilising firebase for the backend  and a storage facility. Features include user authentication, stock management, AI response (Google's Gemini model),Firebase Authentication, Redis Caching, email services.",
-            liveLink: "https://main.gachara.store/Login",
+            description: "Architected a robust, multi-tiered business management ecosystem for Alltech, managing operations across two shops. Designed a microservices architecture utilizing Node.js, Django, and React with Firebase integration. Implemented advanced features including user authentication, inventory management, and AI-powered responses using Google's Gemini model. Leveraged cloud technologies (AWS, Firebase) and optimized performance with Redis caching and Meilisearch. Ensured security with Firebase Authentication and implemented email services.",
             isPrivate: true,
-            technologies: ["Django", "React","Express", "PostgreSQL", "AWS RDS,EC2,Route 53", "Vercel", "Chakra UI", "Google Gemini API","Firebase  Authentication,Realtime Database","Redis Cache","Meilisearch","Google SMTP","Sequelizer"],
-            screenshot: require("./alltech.png")
+            technologies: ["Django", "React", "Express", "PostgreSQL", "AWS RDS,EC2,Route 53", "Vercel", "Chakra UI", "Nginx", "Firebase Authentication,Realtime Database", "Redis Cache", "Meilisearch", "Google SMTP", "Sequelize"],
+            screenshot: require("../screenshots/alltech.png")
+        },
+        {
+            title: "Password Manager",
+            description: "Developed a secure, user-friendly password management solution using React and Firebase Realtime Database. Implemented Corbado for advanced authentication, enabling phone-based passkey sign-in. Ensured data security through bcrypt hashing and encryption for database transmissions.",
+            technologies: ["React", "Vercel", "Firebase Realtime Database","Corbado"],
+            isPrivate: true,
+            screenshot: require('../screenshots/password.png')
+        },
+        {
+            title: "Celery Scheduler",
+            description: "Engineered a powerful task scheduling system for client and personal applications using Celery beat and Celery worker. Deployed on AWS EC2 for scalability and high availability, with Supervisor for process control and monitoring.",
+            technologies: ["Django", "Celery", "AWS EC2", "Supervisor"],
+            githubLink: "https://github.com/johngachara/scheduler"
+        },
+        {
+            title: "GitHub Username Search React App",
+            description: "Created an intuitive React application for GitHub user discovery, integrating GitHub's public API for real-time data retrieval. Implemented responsive design for seamless user experience across devices.",
+            githubLink: "https://github.com/johngachara/githubapi",
+            technologies: ["React", "GitHub API"],
+            screenshot:require("../screenshots/github.png")
+        },
+        {
+            title: "SPOTIFY CLONE",
+            description: "Developed a comprehensive web application cloning Spotify's functionality, integrating Spotify's Web API and Web Playback SDK for authentic music streaming experience. Implemented user authentication and features for song search, playback, and playlist management.",
+            githubLink: "https://github.com/johngachara/spotifyclone",
+            technologies: ["React", "Spotify API", "Web Playback SDK"],
+            screenshot:require('../screenshots/spotify.png')
+        },   {
+            "title": "Gemini-Powered Intelligent Chatbot",
+            "description": "Engineered a cutting-edge chatbot application leveraging Google's state-of-the-art Generative AI models, Gemini and Gemini Pro. This project showcases proficiency in integrating advanced AI technologies with modern web development frameworks.",
+            "githubLink": "https://github.com/johngachara/chatbot",
+            "technologies": ["React", "Google Generative AI SDK"],
+            screenshot:require('../screenshots/gemini.png')
         },
         {
             title: "COVID-19 ANALYSIS",
-            description: "A web application utilizing Python's data visualization and manipulation tools on a large COVID-19 analysis dataset from Kaggle. Visualized various observations using pair plots and bar graphs.",
+            description: "Engineered a data-driven web application for COVID-19 trend analysis, utilizing Python's data visualization and manipulation tools on a large-scale Kaggle dataset. Created insightful visualizations and integrated Django for a user-friendly web interface to explore the data. This project showcases skills in data analysis, visualization, and web application development for handling and presenting large datasets.",
             githubLink: "https://github.com/johngachara/Covid19Analysis",
-            technologies: ["Python", "Pandas", "NumPy", "Seaborn", "Matplotlib","Django"],
-            screenshot: require("./covid.png")
+            technologies: ["Python", "Pandas", "NumPy", "Seaborn", "Matplotlib", "Django"],
+            screenshot: require("../screenshots/covid.png")
         },
         {
             title: "RANDOM FOREST MODEL",
-            description: "Developed a Random Forest model predicting car prices based on a Kaggle dataset utilizing Pandas and Sci-kit Learn. Predictions stored in a simple CSV file.",
+            description: "Developed a machine learning model for precise car price prediction using a Random Forest algorithm. Implemented with Scikit-learn on a comprehensive Kaggle dataset, utilizing Pandas for efficient data manipulation and preprocessing. Achieved high accuracy in price predictions.",
             githubLink: "https://github.com/johngachara/random-forest-model",
             technologies: ["Python", "Pandas", "Scikit-learn"],
         },
         {
-            title: "SPOTIFY CLONE",
-            description: "A web application clone of Spotify, utilizing Spotify's web API and Web Playback SDK. Offers user authentication and seamless integration with Spotify, allowing users to search and play songs, view playlists, etc.",
-            githubLink: "https://github.com/johngachara/spotifyclone",
-            technologies: ["React", "Spotify API", "Web Playback SDK"],
-            screenshot:require('./spotify.png')
-        },
-        {
             title: "TITANIC DATA ANALYSIS",
-            description: "Performed data analysis on the historic Titanic dataset utilizing Python tools. Utilized scikit-learn library for preprocessing techniques e.g., Normalization.",
+            description: "Conducted an in-depth analysis of the historic Titanic dataset, employing advanced data preprocessing techniques using Scikit-learn, including normalization. Utilized Pandas, Seaborn, and NumPy for comprehensive data manipulation and visualization, extracting meaningful insights from complex historical data.",
             githubLink: "https://github.com/johngachara/titanic-data-analysis",
             technologies: ["Python", "Pandas", "Seaborn", "NumPy", "Scikit-learn"],
-            screenshot: "/api/placeholder/400/200"
+        },
+        {
+            "title": "Iris Dataset Visualization Web App",
+            "description": "Developed a dynamic web application showcasing advanced data visualization techniques for the renowned Iris dataset. Leveraged Matplotlib and Seaborn to create interactive, publication-quality plots, demonstrating proficiency in data analysis and visualization in a web environment.",
+            "githubLink": "https://github.com/johngachara/Irisvisualization",
+            "technologies": ["Python", "Matplotlib", "Seaborn", "Web Development"],
+        },
+        {
+            "title": "K-Nearest Neighbors Wine Classification Model",
+            "description": "Engineered a sophisticated machine learning model utilizing the K-Nearest Neighbors algorithm to classify wines based on their chemical properties. This project showcases expertise in feature engineering, model training, and evaluation using industry-standard tools.",
+            "githubLink": "https://github.com/johngachara/knn2",
+            "technologies": ["Python", "Scikit-learn", "K-Nearest Neighbors", "Data Preprocessing"],
+
+        },
+        {
+            "title": "Iris Classification using K-Nearest Neighbors",
+            "description": "Developed a high-performance machine learning model for the classic Iris flower classification problem. This project demonstrates proficiency in applying the K-Nearest Neighbors algorithm to solve real-world classification challenges.",
+            "githubLink": "https://github.com/johngachara/knneighbours",
+            "technologies": ["Python", "Scikit-learn", "K-Nearest Neighbors", "Data Visualization"],
+
         },
         {
             title: "Restaurant Website",
             description: "A static website for a restaurant showcasing their menu, location, and other information, built using HTML5 and CSS3.",
             githubLink: "https://github.com/johngachara/restaurantwebsite",
             technologies: ["HTML5", "CSS3"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "Simple Image Uploader App",
             description: "A Django web application that allows users to upload and view images.",
             githubLink: "https://github.com/johngachara/imageuploader",
             technologies: ["Django", "Python"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "Weather App",
             description: "A Django web application that displays current weather information and forecasts by integrating with the VisualCrossing Weather API.",
             githubLink: "https://github.com/johngachara/weatherapp",
             technologies: ["Django", "Python", "VisualCrossing Weather API"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "Weather 2.0",
             description: "An improved version of the Weather app mentioned earlier, with additional features and a better UI.",
             githubLink: "https://github.com/johngachara/weather2.0",
             technologies: ["Django", "Python", "VisualCrossing Weather API"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "Astronomy Picture of the Day",
             description: "An application that fetches and displays the Astronomy Picture of the Day from NASA's API.",
             githubLink: "https://github.com/johngachara/astronomy",
             technologies: ["Python", "NASA API"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "Simple RESTful API for Posts",
             description: "A RESTful API built with Django, providing endpoints to create, read, update, and delete blog posts.",
             githubLink: "https://github.com/johngachara/restapi",
             technologies: ["Django", "Django REST Framework"],
-            screenshot: "/api/placeholder/400/200"
-        },
-        {
-            title: "Iris Dataset Visualization App",
-            description: "A web application that visualizes the famous Iris dataset using data visualization libraries i.e., Matplotlib and Seaborn.",
-            githubLink: "https://github.com/johngachara/Irisvisualization",
-            technologies: ["Python", "Matplotlib", "Seaborn"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "Song Management API",
             description: "A Django-based RESTful API for managing songs, artists, albums, and their relationships.",
             githubLink: "https://github.com/johngachara/RESTAPI2",
             technologies: ["Django", "Django REST Framework"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "Shop Management API",
             description: "A Django-based RESTful API for managing shops, products, inventory, and their relationships.",
             githubLink: "https://github.com/johngachara/restapi3",
             technologies: ["Django", "Django REST Framework"],
-            screenshot: "/api/placeholder/400/200"
         },
-        {
-            title: "K-Nearest Neighbors Classifier (Wine Dataset)",
-            description: "A machine learning model using the K-Nearest Neighbors algorithm to classify the Wine dataset, implemented using the Scikit-learn library in Python.",
-            githubLink: "https://github.com/johngachara/knn2",
-            technologies: ["Python", "Scikit-learn", "K-Nearest Neighbors"],
-            screenshot: "/api/placeholder/400/200"
-        },
-        {
-            title: "K-Nearest Neighbors Classifier (Iris Dataset)",
-            description: "Similar to the previous project, but using the Iris dataset and the K-Nearest Neighbors algorithm for classification.",
-            githubLink: "https://github.com/johngachara/knneighbours",
-            technologies: ["Python", "Scikit-learn", "K-Nearest Neighbors"],
-            screenshot: "/api/placeholder/400/200"
-        },
+
         {
             title: "Express.js API with MongoDB",
             description: "A RESTful API built with Express.js and MongoDB, utilizing MongoDB's find functions to perform CRUD operations on a simple schema.",
             githubLink: "https://github.com/johngachara/expressapi",
             technologies: ["Express.js", "MongoDB", "Node.js"],
-            screenshot: "/api/placeholder/400/200"
         },
         {
             title: "Express.js School API",
             description: "Similar to the previous project, but with a more complex schema related to a school or educational institution, allowing CRUD operations on entities like students.",
             githubLink: "https://github.com/johngachara/expressapi2",
             technologies: ["Express.js", "MongoDB", "Node.js"],
-            screenshot: "/api/placeholder/400/200"
         },
-        {
-            title: "GitHub Username Search React App",
-            description: "A React application that allows users to search for GitHub usernames and display relevant information about the user i.e., repositories.",
-            githubLink: "https://github.com/johngachara/githubapi",
-            technologies: ["React", "GitHub API"],
-            screenshot: "/api/placeholder/400/200"
-        }
     ];
 
     return (

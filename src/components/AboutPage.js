@@ -4,14 +4,10 @@ import {
     Flex,
     Heading,
     Text,
-    UnorderedList,
-    ListItem,
     Link,
     Avatar,
     Icon,
-    Divider,
     Grid,
-    GridItem,
     Container,
     useColorModeValue,
     VStack,
@@ -22,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaMapMarkerAlt, FaEnvelope, FaPhone, FaUniversity, FaCertificate, FaLaptopCode, FaTools, FaDesktop, FaUserTie } from 'react-icons/fa';
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 
 const MotionBox = motion(Box);
 

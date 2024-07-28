@@ -22,7 +22,7 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaServer, FaBrain, FaSun, FaMoon } fr
 import { SiTensorflow, SiReact, SiDjango, SiPostgresql,SiExpress,SiCelery,SiAwsorganizations,SiRedis,SiMeilisearch,SiFirebase,SiMongodb,SiNginx,SiCaddy,SiPandas,SiNumpy,SiUbuntu,SiScikitlearn ,SiCpanel} from 'react-icons/si';
 
 // Placeholder for project image
-const alltechImage = require("./alltech.png")
+const alltechImage = require("../screenshots/alltech.png")
 
 const RotatingCube = () => {
     return (
