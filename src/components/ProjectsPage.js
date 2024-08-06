@@ -117,6 +117,12 @@ const ProjectsPage = () => {
             githubLink: "https://github.com/johngachara/scheduler"
         },
         {
+            title: "Meilisearch Querying Backend",
+            description: "Developed a high-performance querying backend using Meilisearch to deliver fast and efficient search results. Deployed on AWS EC2 with Nginx for robust hosting and traffic management.",
+            githubLink: "https://github.com/johngachara/meilisearch_query",
+            technologies: ["Express.js", "AWS EC2", "Nginx"]
+        },
+        {
             title: "GitHub Username Search React App",
             description: "Created an intuitive React application for GitHub user discovery, integrating GitHub's public API for real-time data retrieval. Implemented responsive design for seamless user experience across devices.",
             githubLink: "https://github.com/johngachara/githubapi",
