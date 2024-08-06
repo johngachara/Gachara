@@ -97,6 +97,12 @@ const ProjectsPage = () => {
             screenshot: require('../screenshots/phenom.png')
         },
         {
+             title: "Credit Card Fraud Detection",
+            description: "A machine learning project to detect fraudulent credit card transactions using various algorithms and neural networks.",
+            technologies: ["Python", "Scikit-learn", "TensorFlow", "Keras", "Pandas", "NumPy"],
+              githubLink: "https://github.com/johngachara/credit_card_fraud_detection",
+        },
+        {
             title: "ALLTECH SHOP MANAGEMENT SYSTEM",
             description: "Architected a robust, multi-tiered business management ecosystem for Alltech, managing operations across two shops. Designed a microservices architecture utilizing Node.js, Django, and React with Firebase integration. Implemented advanced features including user authentication, inventory management, and AI-powered responses using Google's Gemini model. Leveraged cloud technologies (AWS, Firebase) and optimized performance with Redis caching and Meilisearch. Ensured security with Firebase Authentication and implemented email services.",
             isPrivate: true,
