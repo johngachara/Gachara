@@ -240,18 +240,6 @@ const Home = () => {
                                 boxShadow="2xl"
                                 mb={6}
                             />
-                            <Flex justify="center">
-                                <Button
-                                    as={Link}
-                                    href="https://main.gachara.store/Login"
-                                    isExternal
-                                    colorScheme="blue"
-                                    size="lg"
-                                    rightIcon={<Icon as={FaServer} />}
-                                >
-                                    View Project
-                                </Button>
-                            </Flex>
                         </Box>
 
                         <Box>
@@ -265,7 +253,7 @@ const Home = () => {
                                 <Link href="mailto:johngachara29@gmail.com" isExternal>
                                     <Icon as={FaEnvelope} boxSize={10} />
                                 </Link>
-                                <Link href="#" isExternal>
+                                <Link href="https://www.linkedin.com/in/john-gachara-5b8030298/" isExternal>
                                     <Icon as={FaLinkedin} boxSize={10} />
                                 </Link>
                             </HStack>
