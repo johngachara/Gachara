@@ -205,31 +205,81 @@ const Home = () => {
                                 Featured Project: Alltech Management System
                             </Heading>
                             <Text fontSize="xl" mb={6} textAlign="center" maxW="3xl" mx="auto">
-                                This comprehensive set of web applications showcases my expertise in developing
-                                practical and scalable solutions for a phone repair shop. The applications include:
-                                <br></br>
-                                Firebase Authentication: Provides secure and seamless user authentication and management
-                                on the frontend.
-                                <br></br>
-                                JWT Authentication: Ensures robust and secure access control for backend APIs.
-                                <br></br>
-                                Redis Caching: Enhances application performance with efficient caching mechanisms.
-                                <br></br>
-                                MeiliSearch: Implements fast and responsive search functionality for swift data
-                                retrieval.
-                                <br></br>
-                                Google SMTP: Integrates reliable emailing services for customer notifications and
-                                transaction updates.
-                                <br></br>
-                                Firebase Push Notifications: Real-time push notifications to keep users informed about
-                                stock updates and order updates.
-                                <br></br>
-                                Firebase Realtime Database & PostgreSQL: Data is stored using these databases
-                                <br></br>
-                                The system effectively manages key business functions, including stock control, sales
-                                tracking, and transaction management, demonstrating my ability to build and integrate
-                                advanced technologies in real-world applications
+                                <p>
+                                    This comprehensive suite of web applications showcases my expertise in developing
+                                    scalable and efficient solutions for a phone shop POS system. The suite includes:
+                                </p>
+
+                                <ul>
+                                    <li><strong>Firebase Authentication</strong>: Provides secure user authentication
+                                        and role-based access control across the frontend.
+                                    </li>
+                                    <li><strong>JWT Authentication</strong>: Ensures robust and secure API access
+                                        control in the backend, issuing tokens after validating Firebase ID tokens.
+                                    </li>
+                                    <li><strong>Redis Caching</strong>: Enhances performance by efficiently caching
+                                        frequent data requests, reducing load times on the backend.
+                                    </li>
+                                    <li><strong>MeiliSearch Integration</strong>: Implements fast and responsive
+                                        full-text search functionality for quick data retrieval in both the frontend and
+                                        backend.
+                                    </li>
+                                    <li><strong>Google SMTP (via Nodemailer & Django)</strong>: Enables reliable email
+                                        services for customer notifications, sales reports, and transaction updates.
+                                    </li>
+                                    <li><strong>Celery Application</strong>: A separate service that schedules and sends
+                                        periodic sales transaction emails to administrators using API-based
+                                        authentication across the backend servers.
+                                    </li>
+                                    <li><strong>Firebase Push Notifications</strong>: Real-time notifications to keep
+                                        users updated on stock levels and order statuses.
+                                    </li>
+                                    <li><strong>Firebase Realtime Database & PostgreSQL</strong>: Utilizes both NoSQL
+                                        (Firebase) and relational (PostgreSQL) databases for efficient data storage and
+                                        management.
+                                    </li>
+                                    <li><strong>Nginx Reverse Proxy</strong>: Centralized reverse proxy configuration to
+                                        handle requests for both the Django and Node.js backend servers, ensuring load
+                                        balancing and security.
+                                    </li>
+                                </ul>
+
+                                <p>
+                                    This system manages core business operations such as inventory control, sales
+                                    tracking, transaction management, and customer communications, demonstrating my
+                                    ability to integrate cutting-edge technologies into practical, real-world
+                                    applications. The applications are hosted on AWS, ensuring reliability and
+                                    scalability.
+                                </p>
                             </Text>
+
+                            <HStack spacing={4} justifyContent="center" mb={6}>
+                                <Link href="https://github.com/johngachara/phone_shop_pos_backend" isExternal>
+                                    <HStack>
+                                        <FaGithub size={24} /> {/* Use FaGithub icon */}
+                                        <Text>View Django Repo</Text>
+                                    </HStack>
+                                </Link>
+                                <Link href="https://github.com/johngachara/sequelizer" isExternal>
+                                    <HStack>
+                                        <FaGithub size={24} />
+                                        <Text>View Node.js Repo</Text>
+                                    </HStack>
+                                </Link>
+                                <Link href="https://github.com/johngachara/scheduler" isExternal>
+                                    <HStack>
+                                        <FaGithub size={24} />
+                                        <Text>View Celery Repo</Text>
+                                    </HStack>
+                                </Link>
+                                <Link href="https://github.com/johngachara/phone_shop_pos" isExternal>
+                                    <HStack>
+                                        <FaGithub size={24} />
+                                        <Text>View Frontend Repo</Text>
+                                    </HStack>
+                                </Link>
+                            </HStack>
+
                             <Image
                                 src={alltechImage}
                                 alt="Alltech Management System Screenshot"
@@ -241,20 +291,19 @@ const Home = () => {
                                 mb={6}
                             />
                         </Box>
-
                         <Box>
                             <Heading as="h2" size="2xl" mb={6} textAlign="center">
                                 Let's Connect
                             </Heading>
                             <HStack justify="center" spacing={8}>
                                 <Link href="https://github.com/johngachara" isExternal>
-                                    <Icon as={FaGithub} boxSize={10} />
+                                    <Icon as={FaGithub} boxSize={10}/>
                                 </Link>
                                 <Link href="mailto:johngachara29@gmail.com" isExternal>
-                                    <Icon as={FaEnvelope} boxSize={10} />
+                                    <Icon as={FaEnvelope} boxSize={10}/>
                                 </Link>
                                 <Link href="https://www.linkedin.com/in/john-gachara-5b8030298/" isExternal>
-                                    <Icon as={FaLinkedin} boxSize={10} />
+                                    <Icon as={FaLinkedin} boxSize={10}/>
                                 </Link>
                             </HStack>
                         </Box>

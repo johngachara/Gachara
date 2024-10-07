@@ -11,7 +11,7 @@ import {
     Spacer,
     Tag,
     Image,
-    useColorModeValue, Center,
+    useColorModeValue, Center, HStack,
 } from '@chakra-ui/react';
 import { FaGithub, FaLock, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -42,9 +42,22 @@ const ProjectCard = ({ project }) => {
                         {project.title}
                     </Heading>
                     <Spacer />
-                    {project.githubLink && (<Link href={project.githubLink} isExternal mr={2}>
-                        <Icon as={FaGithub} boxSize={6}/>
-                    </Link>)}
+                    {project.githubLink && (
+                        <HStack spacing={2} mr={2}>
+                            {Array.isArray(project.githubLink)
+                                ? project.githubLink.map((link, index) => (
+                                    <Link key={index} href={link} isExternal>
+                                        <Icon as={FaGithub} boxSize={6} />
+                                    </Link>
+                                ))
+                                : (
+                                    <Link href={project.githubLink} isExternal>
+                                        <Icon as={FaGithub} boxSize={6} />
+                                    </Link>
+                                )
+                            }
+                        </HStack>
+                    )}
                     {project.isPrivate && (
                         <Tag colorScheme="red" size="sm">
                             <Icon as={FaLock} mr={1} /> Private
@@ -66,12 +79,11 @@ const ProjectCard = ({ project }) => {
                         height="200px"
                         width="100%"
                     />
-                ) : <Center>
-                    <h2 style={{marginBottom:20}}>
-                      No screenshot to show
-
-                    </h2>
-                </Center>}
+                ) : (
+                    <Center>
+                        <h2 style={{ marginBottom: 20 }}>No screenshot to show</h2>
+                    </Center>
+                )}
                 <Text mb={4} flex="1">
                     {project.description}
                 </Text>
@@ -87,8 +99,21 @@ const ProjectCard = ({ project }) => {
     );
 };
 
+
 const ProjectsPage = () => {
     const projects = [
+        {
+            title: "ALLTECH SHOP MANAGEMENT SYSTEM",
+            description: "Architected a comprehensive, multi-tiered business management ecosystem for Alltech, integrating operations across multiple retail locations. Developed a microservices architecture utilizing Node.js and Django, complemented by a responsive React frontend and Firebase integration. Key functionalities include secure user authentication via Firebase, robust inventory management, and AI-driven insights powered by Google's Gemini model. Optimized system performance with Redis caching and MeiliSearch for rapid data retrieval. Leveraged AWS cloud services for deployment and security, incorporating Firebase Authentication for user verification and Google SMTP for reliable email notifications regarding transactions and stock updates.",
+            githubLink: [
+                'https://github.com/johngachara/phone_shop_pos_backend',
+                'https://github.com/johngachara/sequelizer',
+                'https://github.com/johngachara/scheduler',
+                'https://github.com/johngachara/phone_shop_pos'
+            ],
+            technologies: ["Django", "React", "Express", "PostgreSQL", "AWS RDS", "EC2", "Route 53", "Vercel", "Chakra UI", "Nginx", "Firebase Authentication", "Realtime Database", "Redis Cache", "Meilisearch", "Google SMTP", "Sequelize"],
+            screenshot: require("../screenshots/alltech.png")
+        },
         {
             title: "PHENOM ISP SYSTEM (ONGOING)",
             description: "Engineered a state-of-the-art ISP management system that revolutionizes network administration. Seamlessly integrated customer data handling with autonomous router activation via Mikrotik API. Implemented dynamic network resource management based on real-time subscription status. Incorporated M-PESA STK Push for frictionless payment processing and developed an intelligent bulk SMS system for proactive customer engagement.",
@@ -101,26 +126,6 @@ const ProjectsPage = () => {
             description: "A machine learning project to detect fraudulent credit card transactions using various algorithms and neural networks.",
             technologies: ["Python", "Scikit-learn", "TensorFlow", "Keras", "Pandas", "NumPy"],
               githubLink: "https://github.com/johngachara/credit_card_fraud_detection",
-        },
-        {
-            title: "ALLTECH SHOP MANAGEMENT SYSTEM",
-            description: "Architected a robust, multi-tiered business management ecosystem for Alltech, managing operations across two shops. Designed a microservices architecture utilizing Node.js, Django, and React with Firebase integration. Implemented advanced features including user authentication, inventory management, and AI-powered responses using Google's Gemini model. Leveraged cloud technologies (AWS, Firebase) and optimized performance with Redis caching and Meilisearch. Ensured security with Firebase Authentication and implemented email services.",
-            isPrivate: true,
-            technologies: ["Django", "React", "Express", "PostgreSQL", "AWS RDS,EC2,Route 53", "Vercel", "Chakra UI", "Nginx", "Firebase Authentication,Realtime Database", "Redis Cache", "Meilisearch", "Google SMTP", "Sequelize"],
-            screenshot: require("../screenshots/alltech.png")
-        },
-        {
-            title: "Password Manager",
-            description: "Developed a secure, user-friendly password management solution using React and Firebase Realtime Database. Implemented Corbado for advanced authentication, enabling phone-based passkey sign-in. Ensured data security through bcrypt hashing and encryption for database transmissions.",
-            technologies: ["React", "Vercel", "Firebase Realtime Database","Corbado"],
-            isPrivate: true,
-            screenshot: require('../screenshots/password.png')
-        },
-        {
-            title: "Celery Scheduler",
-            description: "Engineered a powerful task scheduling system for client and personal applications using Celery beat and Celery worker. Deployed on AWS EC2 for scalability and high availability, with Supervisor for process control and monitoring.",
-            technologies: ["Django", "Celery", "AWS EC2", "Supervisor"],
-            githubLink: "https://github.com/johngachara/scheduler"
         },
         {
             title: "Meilisearch Querying Backend",
