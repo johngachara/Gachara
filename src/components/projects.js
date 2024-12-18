@@ -89,9 +89,27 @@ const projects = [
             "AWS Amplify",
         ],
         type: "Frontend Application",
-        screenshot: require('../screenshots/alltech.png'),
         startYear: 2023,
         endYear: "current",
+        complexity: "Advanced"
+    },
+    {
+        title: "ALLTECH SHOP MANAGEMENT SYSTEM: Automated Reporting Engine",
+        description: "Engineered a sophisticated Celery-based task scheduling system to automate critical business processes.",
+        detailedDescription: `
+        Task management solution featuring:
+        • Automated report generation (weekly sales reports)
+        • Email notifications via Google SMTP
+        • Asynchronous task queue for distributed workflows
+        `,
+        githubLink: 'https://github.com/johngachara/scheduler',
+        technologies: [
+            "Celery", "Django", "Task Queue",
+            "Periodic Jobs"
+        ],
+        type: "Background Task Management",
+        startYear: 2023,
+        endYear: 'current',
         complexity: "Advanced"
     },
     {
@@ -125,30 +143,9 @@ const projects = [
         `,
         githubLink: "https://github.com/johngachara/chatbot",
         technologies: ["React", "Google Generative AI SDK"],
-        screenshot: require('../screenshots/gemini.png'),
         startYear: 2023,
         endYear: 2024,
         complexity: "Intermediate"
-    },
-    {
-        title: "ALLTECH SHOP MANAGEMENT SYSTEM: Automated Reporting Engine",
-        description: "Engineered a sophisticated Celery-based task scheduling system to automate critical business processes.",
-        detailedDescription: `
-        Task management solution featuring:
-        • Automated report generation (weekly sales reports)
-        • Email notifications via Google SMTP
-        • Asynchronous task queue for distributed workflows
-        • Periodic job execution for system maintenance
-        `,
-        githubLink: 'https://github.com/johngachara/scheduler',
-        technologies: [
-            "Celery", "Django", "Google SMTP", "Task Queue",
-            "Periodic Jobs", "Email Automation"
-        ],
-        type: "Background Task Management",
-        startYear: 2023,
-        endYear: 2024,
-        complexity: "Advanced"
     },
     {
         title: "Meilisearch Querying Backend",
@@ -176,7 +173,6 @@ const projects = [
         `,
         githubLink: "https://github.com/johngachara/githubapi",
         technologies: ["React", "GitHub API"],
-        screenshot: require("../screenshots/github.png"),
         startYear: 2023,
         endYear: 2024,
         complexity: "Intermediate"
@@ -193,7 +189,6 @@ const projects = [
         `,
         githubLink: "https://github.com/johngachara/spotifyclone",
         technologies: ["React", "Spotify API", "Web Playback SDK"],
-        screenshot: require('../screenshots/spotify.png'),
         startYear: 2023,
         endYear: 2024,
         complexity: "Intermediate"

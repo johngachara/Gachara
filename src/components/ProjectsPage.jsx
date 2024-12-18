@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
     Box,
     Heading,
@@ -29,9 +28,10 @@ import {
     Tooltip
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { FaCheck, FaCalendar, FaGithub, FaExternalLinkAlt, FaHome, FaUser } from 'react-icons/fa';
+import { FaCheck, FaCalendar, FaGithub, FaHome, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import projects from "./projects";
+import {useState} from "react";
 
 const MotionBox = motion(Box);
 
@@ -70,7 +70,7 @@ const Navigation = () => {
                 <Tooltip label="View Portfolio Source">
                     <IconButton
                         as="a"
-                        href="https://github.com/johngachara/portfolio"
+                        href="https://github.com/johngachara"
                         target="_blank"
                         aria-label="GitHub repository"
                         icon={<FaGithub />}
@@ -270,6 +270,7 @@ const ProjectsPage = () => {
                                 {category}
                             </option>
                         ))}
+
                     </Select>
                 </VStack>
 
